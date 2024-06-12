@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Health App Login</title>
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel = "stylesheet" type="text/css" href = "css/style.css" >
+</head>
+<body>
+  <div>
+    <br><br><img src = "/images/Logo.png" width = 130%></src>
+    <h1> Create Account </h1>
+    <form action="/register/Register" method="POST">
+
+      <% if (userAlreadyExists.length > 0) { %>
+        <input type="text" id = "inputError" placeholder="Username" name="username" required><br>
+        <p id = "textError"> <%= userAlreadyExists %></p><br>
+      <% } else { %>
+        <input type="text" placeholder="Username" name="username" required><br>
+      <% } %>
+
+      <% if (passwordsNotMatching.length > 0) { %>
+        <input type="password" id = "inputError" placeholder="Password" name="password" required><br>
+        <p id = "textError"> <%= passwordsNotMatching %></p><br>
+        <input type="password" id = "inputError" placeholder="Repeat Password" name="repeatPassword" required><br>
+        <p id = "textError"> <%= passwordsNotMatching %></p><br>
+      <% } else if (minLength.length > 0){ %>
+        <input type="password" id = "inputError" placeholder="Password" name="password" required><br>
+        <p id = "textError"> <%= minLength %></p><br>
+        <input type="password" id = "inputError" placeholder="Repeat Password" name="repeatPassword" required><br>
+        <p id = "textError"> <%= minLength %></p><br>
+      <% } else { %>
+        <input type="password" placeholder="Password" name="password" required><br>
+        <input type="password" placeholder="Repeat Password" name="repeatPassword" required><br>
+      <% } %>
+
+      <input type="text" placeholder="First Name" name="firstName" required><br>
+      <input type="text" placeholder="Last Name" name="lastName" required><br>
+      <input type="text" placeholder="Security Question" name="securityQuestion" required><br>
+      <input type="text" placeholder="Security Answer" name="securityAnswer" required><br>
+      <button type="Register">Register</button>
+      
+    </form>
+    <br><hr>
+    <a href = "index">Already have an account? Sign in</a>
+  </div>
+</body>
+</html>

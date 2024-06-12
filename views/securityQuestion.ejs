@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Health Monitor</title>
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel = "stylesheet" type="text/css" href = "css/style.css" >
+</head>
+<body>
+
+  <div>
+    <h1 id = "ForgotPasswordHeader"> Forgot your password? </h1>
+    <hr id = "ForgotPasswordLine"><br>
+    <h2 id = "LetUsHelpYou"> Let us help you</h2><br><br><br>
+
+    <form action="/securityQuestion/securityQuestion" method="POST">
+        
+
+        <% if (IncorrectAnswer.length > 0) { %>
+            <p id = "SecurityQuestionText"> <%= SecurityQuestion %> </p><br>
+            <input type="text" id = "inputError" placeholder="Security Answer" name="securityAnswer" required><br>
+            <p id = "textError"> <%= IncorrectAnswer %></p><br>
+        <% } else { %>
+            <p id = "SecurityQuestionText"> <%= SecurityQuestion %> </p><br>
+            <input type="text" placeholder="Security Answer" name="securityAnswer" required><br>
+        <% } %>
+
+
+
+
+        <button type="Submit">Submit</button>
+    </form>
+    <br><br><br><br><br><br><hr>
+    <a href = "index">Back to Sign in</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Monitor</title>
+  <link rel = "stylesheet" type="text/css" href = "css/style.css" >
+  <link rel = "stylesheet" type="text/css" href="css/sb-admin-2.min.css" >
+  <link href="/handsontable/handsontable.full.min.css" rel="stylesheet" media="screen">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel = "stylesheet" type="text/css" href = "css/style.css" >
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+</head>
+<body id="page-top">
+  <div id="logout-report-buttons" class="topnav">
+    <form action="/tables/Logout" method="POST">
+      <button type="submit" name="action" value="logout">Logout</button>
+    </form>
+    <form action="/tables/Report" method="POST">
+      <button type="submit" name="action" value="logout">Report</button>
+    </form>
+  </div>
+  
+  <div id="logo-container">
+    <h1>HealthCare</h1>
+  </div>
+
+  <!-- Page Content Beginning-->
+  <div class="container-fluid">
+
+    <!-- Page Title-->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 id="title-text" >My Health Data:</h1>
+    </div>
+
+
+    <!-- Content Row -->
+    <div class="row">
+      <!-- Calories -->
+
+
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Body Temperature</div>
+                <div id="calorie-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Heart Rate</div>
+                <div id="weight-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Excercise -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Excercise</div>
+                <div id="activity-card"class="h5 mb-0 font-weight-bold text-gray-800">0 Minutes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest Entry / BMI -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Last Entry</div>
+                <div id="date-card" class="h5 mb-0 font-weight-bold text-gray-800">No Previous Entry</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-comments fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Row -->
+  <div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-xl-8 col-lg-7">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Net Calories</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="chart-area">
+            <div id="scatter-plot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-5">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Activities</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="chart-pie pt-4 pb-2">
+            <div id="myPieChart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Content Row -->
+  <div class="row full-width-row">
+
+    <!-- Content Column -->
+    <div class="col-xl-8 col-lg-7">
+
+      <!-- Project Card Example -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Logs</h6>
+        </div>
+        <div class="card-body">
+          <div id="table"></div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row full-width-row">
+    <!--Other column -->
+    <div class="col-xl-8 col-lg-7">
+
+      <!-- Form -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Data Entry</h6>
+        </div>
+        <div class="card-body">
+          <div class="input-form">
+            <form action="/tables/Input" method="post">
+              <input type="Date" name="Date" placeholder="Date" id="Date" required/>
+              <div>
+                  <select name="Activity" default="Other" id="Activity" placeholder="Select Activity" required>
+                    <option value="" selected disabled hidden> Select an Activity  </option> 
+                    <option value="Running">Running</option>
+                    <option value="Walking">Walking</option>
+                    <option value="Dancing">Dancing</option>
+                    <option value="Swimming">Swimming</option>
+                    <option value="Biking">Biking</option>
+                    <option value="Hiking">Hiking</option>
+                    <option value="Tennis">Tennis</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Football">Football</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="Pilates">Pilates</option>
+                    <option value="Weight Training">Weight Training</option>
+                    <option value="Calisthenics">Calisthenics</option>
+                    <option value="Other - Flexibility">Other - Sport</option>
+                    <option value="Other - Aerobic">Other - Aerobic</option>
+                    <option value="Other - Flexibility">Other - Flexibility</option>
+                    <option value="Other - Flexibility">Other - Muscle-strengthening</option>
+                    <option value="Other">Other - Not Listed</option>
+                  </select>
+              </div>
+              <div>
+                <input type="number" min="0" max="600" name="Minutes" placeholder="Minutes" id="Minutes" required/>
+              </div>
+              <div>
+                  <input type="number" min="50" max="1000" name="Weight" placeholder="Weight" id="Weight" required/>
+              </div>
+              <div>
+                  <input type="number" min="0" max="6000" name="CaloriesIn" placeholder="Body Temperature" id="CaloriesIn" required/>
+              </div>
+              <div>
+                  <input type="number" min="0"  max="6000" name="CaloriesOut" placeholder="Heart Rate" id="CaloriesOut" required/>
+              </div>
+              <p>
+                  <input type="submit" value="Send" />
+              </p>
+            </form>
+
+          </div>
+        
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+  
+  
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="/handsontable/handsontable.full.min.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+ <script src="/stats-card.js"></script>
+
+ <script src="/line-chart.js"></script>
+ <script src="/pie-chart.js"></script>
+ <script src="/tableapi.js"></script>
+
+ 
+ 
+</body>
+</html>

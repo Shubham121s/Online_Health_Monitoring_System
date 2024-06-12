@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Health Monitor</title>
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel = "stylesheet" type="text/css" href = "css/style.css" >
+</head>
+<body>
+
+  <div>
+    <br><br><img src = "/images/Logo.png" width = 180%></src>
+    <h1> Member Login </h1>
+    <form action="/index/Index" method="POST">
+      <% if (invalidLogin.length > 0) { %>
+        <input type="text" id = "inputError" placeholder="Username" name="username" required><br>
+        <input type="password" id = "inputError" placeholder="Password" name="password" required><br>
+        <a href = "forgotPassword" class = "InvalidLoginError"> <%= invalidLogin %></a><br>
+      <% } else { %>
+        <input type="text" placeholder="Username" name="username" required><br>
+        <input type="password" placeholder="Password" name="password" required><br>
+        <a href = "forgotPassword" class = "ForgotPassword"> Forgot your password?</a><br>
+      <% } %>
+      <button type="Login">Log in</button>
+    </form>
+
+    <br><hr>
+    <a href = "Register">Don't have an account? Sign Up</a>
+  </div>
+</body>
+</html>
